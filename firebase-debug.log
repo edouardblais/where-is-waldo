@@ -1,0 +1,45 @@
+[debug] [2022-08-13T14:48:07.344Z] ----------------------------------------------------------------------
+[debug] [2022-08-13T14:48:07.347Z] Command:       /home/edouard/.nvm/versions/node/v16.14.2/bin/node /home/edouard/.nvm/versions/node/v16.14.2/bin/firebase emulators:start
+[debug] [2022-08-13T14:48:07.348Z] CLI Version:   11.6.0
+[debug] [2022-08-13T14:48:07.348Z] Platform:      linux
+[debug] [2022-08-13T14:48:07.349Z] Node Version:  v16.14.2
+[debug] [2022-08-13T14:48:07.349Z] Time:          Sat Aug 13 2022 10:48:07 GMT-0400 (Eastern Daylight Saving Time)
+[debug] [2022-08-13T14:48:07.349Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-08-13T14:48:07.512Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-08-13T14:48:07.514Z] > authorizing via signed-in user (edouardblais1@gmail.com)
+[info] i  emulators: Starting emulators: hosting {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: hosting"}}
+[debug] [2022-08-13T14:48:07.577Z] [hub] writing locator at /tmp/hub-waldo-3e003.json
+[debug] [2022-08-13T14:48:07.774Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/waldo-3e003/sites 
+[debug] [2022-08-13T14:48:08.262Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/waldo-3e003/sites 200
+[debug] [2022-08-13T14:48:08.263Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/waldo-3e003/sites {"sites":[{"name":"projects/waldo-3e003/sites/waldo-3e003","defaultUrl":"https://waldo-3e003.web.app","appId":"1:480350558276:web:d7b280f31e65d124838411","type":"DEFAULT_SITE"}]}
+[debug] [2022-08-13T14:48:08.263Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/waldo-3e003/webApps/1:480350558276:web:d7b280f31e65d124838411/config [none]
+[debug] [2022-08-13T14:48:08.830Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/waldo-3e003/webApps/1:480350558276:web:d7b280f31e65d124838411/config 200
+[debug] [2022-08-13T14:48:08.830Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/waldo-3e003/webApps/1:480350558276:web:d7b280f31e65d124838411/config {"projectId":"waldo-3e003","appId":"1:480350558276:web:d7b280f31e65d124838411","storageBucket":"waldo-3e003.appspot.com","apiKey":"AIzaSyAJi8yQ5LOymO6_qGx80ztG294zXujmGgg","authDomain":"waldo-3e003.firebaseapp.com","messagingSenderId":"480350558276"}
+[info] i  hosting: Serving hosting files from: dist {"metadata":{"emulator":{"name":"hosting"},"message":"Serving hosting files from: \u001b[1mdist\u001b[22m"}}
+[info] ✔  hosting: Local server: http://localhost:5000 {"metadata":{"emulator":{"name":"hosting"},"message":"Local server: \u001b[4m\u001b[1mhttp://localhost:5000\u001b[22m\u001b[24m"}}
+[warn] ⚠  emulators: The Emulator UI is not starting, either because none of the emulated products have an interaction layer in Emulator UI or it cannot determine the Project ID. Pass the --project flag to specify a project. {"metadata":{"emulator":{"name":"hub"},"message":"The Emulator UI is not starting, either because none of the emulated products have an interaction layer in Emulator UI or it cannot determine the Project ID. Pass the --project flag to specify a project."}}
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+└─────────────────────────────────────────────────────────────┘
+
+┌──────────┬────────────────┐
+│ Emulator │ Host:Port      │
+├──────────┼────────────────┤
+│ Hosting  │ localhost:5000 │
+└──────────┴────────────────┘
+  Emulator Hub running at localhost:4400
+  Other reserved ports: 4500
+
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
+[info] i  hosting: 127.0.0.1 - - [13/Aug/2022:14:48:21 +0000] "GET / HTTP/1.1" 200 348 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [13/Aug/2022:14:48:21 +0000] \"GET / HTTP/1.1\" 200 348 \"-\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [13/Aug/2022:14:48:21 +0000] "GET /main.js HTTP/1.1" 200 - "http://localhost:5000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [13/Aug/2022:14:48:21 +0000] \"GET /main.js HTTP/1.1\" 200 - \"http://localhost:5000/\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [13/Aug/2022:18:37:54 +0000] "GET / HTTP/1.1" 200 393 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [13/Aug/2022:18:37:54 +0000] \"GET / HTTP/1.1\" 200 393 \"-\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [13/Aug/2022:18:37:55 +0000] "GET /style.css HTTP/1.1" 200 122 "http://localhost:5000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [13/Aug/2022:18:37:55 +0000] \"GET /style.css HTTP/1.1\" 200 122 \"http://localhost:5000/\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [13/Aug/2022:18:37:55 +0000] "GET /main.js HTTP/1.1" 200 - "http://localhost:5000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [13/Aug/2022:18:37:55 +0000] \"GET /main.js HTTP/1.1\" 200 - \"http://localhost:5000/\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [13/Aug/2022:18:59:25 +0000] "GET / HTTP/1.1" 200 393 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [13/Aug/2022:18:59:25 +0000] \"GET / HTTP/1.1\" 200 393 \"-\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [13/Aug/2022:18:59:25 +0000] "GET /style.css HTTP/1.1" 200 122 "http://localhost:5000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [13/Aug/2022:18:59:25 +0000] \"GET /style.css HTTP/1.1\" 200 122 \"http://localhost:5000/\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [13/Aug/2022:18:59:25 +0000] "GET /favicon.ico HTTP/1.1" 200 393 "http://localhost:5000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [13/Aug/2022:18:59:25 +0000] \"GET /favicon.ico HTTP/1.1\" 200 393 \"http://localhost:5000/\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [13/Aug/2022:18:59:44 +0000] "GET / HTTP/1.1" 200 393 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [13/Aug/2022:18:59:44 +0000] \"GET / HTTP/1.1\" 200 393 \"-\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36\""}}
