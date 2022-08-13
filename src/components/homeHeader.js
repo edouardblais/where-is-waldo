@@ -3,7 +3,7 @@ const homeHeader = () => {
 
   const headercontainer = document.createElement('div');
   headercontainer.classList.add('headercontainer');
-  headercontainer.innerText = 'Header';
+  headercontainer.innerText = "Where's Waldo?";
   content.appendChild(headercontainer);
 };
 

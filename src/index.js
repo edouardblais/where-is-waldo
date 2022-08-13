@@ -32,19 +32,19 @@ loadInitialPage();
 const content = document.getElementById('maincontent');
 
 document.addEventListener('click', (e) => {
-  const imagechosen = e.target.src;
+  const imagechosen = e.target.id;
 
-  if (imagechosen === beachimage.src) {
+  if (imagechosen === 'beachimage') {
     content.innerHTML = '';
     playHeader();
     playBeach();
     footer();
-  } else if (imagechosen === snowimage.src) {
+  } else if (imagechosen === 'snowimage') {
     content.innerHTML = '';
     playHeader();
     playSnow();
     footer();
-  } else if (imagechosen === spaceimage.src) {
+  } else if (imagechosen === 'spaceimage') {
     content.innerHTML = '';
     playHeader();
     playSpace();

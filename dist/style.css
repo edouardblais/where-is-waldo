@@ -3,7 +3,7 @@ body {
 }
 
 #maincontent {
-    padding:0;
+    padding:1vh;
     margin:0;
     box-sizing: border-box;
     display: flex;
@@ -13,6 +13,14 @@ body {
     height: 100vh;
     align-items: center;
     justify-content: flex-start;
+}
+
+.homecontentcontainer {
+    display: flex;
+    flex-direction: column;
+    gap:1vh;
+    align-items: center;
+    flex:1;
 }
 
 .imagecontainer {
@@ -27,4 +35,22 @@ body {
 .homeimages {
     max-width:30vw;
     max-height: auto;
+}
+
+.headercontainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5vh;
+    max-height: 7vh;
+    color: red;
+}
+
+.footercontainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2vh;
+    max-height: 3vh;
+    color: blue;
 }
