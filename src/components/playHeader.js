@@ -24,7 +24,7 @@ const homeHeader = () => {
   imagescontainer.appendChild(whitebeard);
 
   const timercontainer = document.createElement('div');
-  timercontainer.innerHTML = timer.time;
+  timercontainer.innerHTML = timer();
 
   const backtohome = document.createElement('button');
   backtohome.innerText = 'Back To Home';

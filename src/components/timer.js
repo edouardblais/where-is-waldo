@@ -1,20 +1,8 @@
-const timer = () => {
-  let time = 0;
-
-  const start = () => {
-    const starttime = Date.now();
-    time = setInterval(() => {
-      const timeelapsed = Date.now() - starttime;
-      return timeelapsed;
-    }, 1000);
-    return time;
-  };
-
-  const stop = () => {
-    clearInterval(time);
-  };
-
-  return { start, stop, time };
-};
+let time = 0;
+const starttime = Date.now();
+const timer = () => setInterval(() => {
+  time = Date.now() - starttime;
+  return time;
+}, 1000);
 
 export default timer;
