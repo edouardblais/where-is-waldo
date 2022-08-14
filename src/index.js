@@ -1,14 +1,12 @@
 import { initializeApp } from 'firebase/app';
-import homeContent from './components/homeContent';
+import homePage from './components/homePage';
 import homeHeader from './components/homeHeader';
 import footer from './components/footer';
 import playHeader from './components/playHeader';
 import playBeach from './components/playBeach';
 import playSnow from './components/playSnow';
 import playSpace from './components/playSpace';
-import beachimage from './images/beach.jpg';
-import snowimage from './images/snow.jpg';
-import spaceimage from './images/space.jpg';
+import showLeaderboard from './components/showLeaderboard';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyAJi8yQ5LOymO6_qGx80ztG294zXujmGgg',
@@ -21,33 +19,33 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 
-const loadInitialPage = () => {
-  homeHeader();
-  homeContent();
-  footer();
-};
-
-loadInitialPage();
-
-const content = document.getElementById('maincontent');
+homePage();
 
 document.addEventListener('click', (e) => {
-  const imagechosen = e.target.id;
+  const content = document.getElementById('maincontent');
+  const target = e.target.id;
 
-  if (imagechosen === 'beachimage') {
+  if (target === 'beachimage') {
     content.innerHTML = '';
     playHeader();
     playBeach();
     footer();
-  } else if (imagechosen === 'snowimage') {
+  } else if (target === 'snowimage') {
     content.innerHTML = '';
     playHeader();
     playSnow();
     footer();
-  } else if (imagechosen === 'spaceimage') {
+  } else if (target === 'spaceimage') {
     content.innerHTML = '';
     playHeader();
     playSpace();
     footer();
+  } else if (target === 'leaderboardbutton') {
+    content.innerHTML = '';
+    homeHeader();
+    showLeaderboard();
+    footer();
+  } else if (target === 'backtohomebutton') {
+    homePage();
   }
 });
