@@ -1,5 +1,6 @@
 const timer = () => {
   let totalseconds = 0;
+  let cron = null;
   const formatTimer = () => {
     totalseconds += 1;
     const hour = (Math.floor(totalseconds / 3600)).toLocaleString('en-US', {
@@ -14,10 +15,21 @@ const timer = () => {
       minimumIntegerDigits: 2,
       useGrouping: false,
     });
-    document.getElementById('timer').innerHTML = `${hour}:${minute}:${seconds}`;
+    if (totalseconds !== 0) {
+      document.getElementById('timer').innerHTML = `${hour}:${minute}:${seconds}`;
+    } else {
+      document.getElementById('timer').innerHTML = '00:00:00';
+    }
   };
-  const starttimer = setInterval(formatTimer, 1000);
-  return { starttimer };
+  const stoptimer = () => {
+    clearInterval(cron);
+    document.getElementById('timer').innerHTML = '00:00:00';
+  };
+  const starttimer = () => {
+    stoptimer();
+    cron = setInterval(formatTimer, 1000);
+  };
+  return { starttimer, stoptimer };
 };
 
 export default timer;

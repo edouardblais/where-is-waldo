@@ -7,6 +7,7 @@ import playBeach from './components/playBeach';
 import playSnow from './components/playSnow';
 import playSpace from './components/playSpace';
 import showLeaderboard from './components/showLeaderboard';
+import timer from './components/timer';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyAJi8yQ5LOymO6_qGx80ztG294zXujmGgg',
@@ -47,5 +48,7 @@ document.addEventListener('click', (e) => {
     footer();
   } else if (target === 'backtohomebutton') {
     homePage();
+    const time = timer();
+    time.stoptimer();
   }
 });

@@ -19,7 +19,8 @@ const playBeach = () => {
   startmodal.addEventListener('click', () => {
     startmodal.classList.remove('showmodal');
     beach.classList.remove('blurimage');
-    timer();
+    const time = timer();
+    time.starttimer();
   });
 
   playcontainer.appendChild(beach);

@@ -19,7 +19,8 @@ const playSnow = () => {
   startmodal.addEventListener('click', () => {
     startmodal.classList.remove('showmodal');
     snow.classList.remove('blurimage');
-    timer();
+    const time = timer();
+    time.starttimer();
   });
 
   playcontainer.appendChild(snow);

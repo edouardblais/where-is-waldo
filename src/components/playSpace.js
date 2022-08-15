@@ -19,7 +19,8 @@ const playSpace = () => {
   startmodal.addEventListener('click', () => {
     startmodal.classList.remove('showmodal');
     space.classList.remove('blurimage');
-    timer();
+    const time = timer();
+    time.starttimer();
   });
 
   playcontainer.appendChild(space);
