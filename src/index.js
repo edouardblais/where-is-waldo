@@ -3,10 +3,11 @@ import homePage from './components/homePage';
 import homeHeader from './components/homeHeader';
 import footer from './components/footer';
 import playHeader from './components/playHeader';
-import playBeach from './components/playBeach';
-import playSnow from './components/playSnow';
-import playSpace from './components/playSpace';
+import playImage from './components/playImage';
 import showLeaderboard from './components/showLeaderboard';
+import beachimage from './images/beach.jpg';
+import snowimage from './images/snow.jpg';
+import spaceimage from './images/space.jpg';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyAJi8yQ5LOymO6_qGx80ztG294zXujmGgg',
@@ -28,17 +29,17 @@ document.addEventListener('click', (e) => {
   if (target === 'beachimage') {
     content.innerHTML = '';
     playHeader();
-    playBeach();
+    playImage(beachimage);
     footer();
   } else if (target === 'snowimage') {
     content.innerHTML = '';
     playHeader();
-    playSnow();
+    playImage(snowimage);
     footer();
   } else if (target === 'spaceimage') {
     content.innerHTML = '';
     playHeader();
-    playSpace();
+    playImage(spaceimage);
     footer();
   } else if (target === 'leaderboardbutton') {
     content.innerHTML = '';

@@ -1,20 +1,19 @@
-import beachimage from '../images/beach.jpg';
 import waldoimage from '../images/waldo.png';
 import odlawimage from '../images/odlaw.png';
 import whitebeardimage from '../images/whitebeard.png';
 import timer from './timer';
 
-const playBeach = () => {
+const playImage = (image) => {
   const time = timer();
   const content = document.getElementById('maincontent');
 
   const playcontainer = document.createElement('div');
   playcontainer.classList.add('playcontainer');
 
-  const beach = document.createElement('img');
-  beach.classList.add('playimage');
-  beach.classList.add('blurimage');
-  beach.src = beachimage;
+  const imageplayed = document.createElement('img');
+  imageplayed.classList.add('playimage');
+  imageplayed.classList.add('blurimage');
+  imageplayed.src = image;
 
   const startmodal = document.createElement('div');
   startmodal.classList.add('startmodal');
@@ -43,9 +42,9 @@ const playBeach = () => {
 
   startmodal.addEventListener('click', () => {
     startmodal.style.visibility = 'hidden';
-    beach.classList.remove('blurimage');
+    imageplayed.classList.remove('blurimage');
     time.starttimer();
-    beach.addEventListener('click', (e) => {
+    imageplayed.addEventListener('click', (e) => {
       const xcoord = e.clientX;
       const ycoord = e.clientY;
       tagmodal.style.left = `${xcoord - 20}px`;
@@ -62,7 +61,7 @@ const playBeach = () => {
     time.stoptimer();
   });
 
-  playcontainer.appendChild(beach);
+  playcontainer.appendChild(imageplayed);
   playcontainer.appendChild(startmodal);
   playcontainer.appendChild(tagmodal);
   playcontainer.appendChild(dropdown);
@@ -70,4 +69,4 @@ const playBeach = () => {
   content.appendChild(playcontainer);
 };
 
-export default playBeach;
+export default playImage;
