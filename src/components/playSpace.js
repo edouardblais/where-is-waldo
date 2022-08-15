@@ -1,4 +1,7 @@
 import spaceimage from '../images/space.jpg';
+import waldoimage from '../images/waldo.png';
+import odlawimage from '../images/odlaw.png';
+import whitebeardimage from '../images/whitebeard.png';
 import timer from './timer';
 
 const playSpace = () => {
@@ -15,22 +18,43 @@ const playSpace = () => {
 
   const startmodal = document.createElement('div');
   startmodal.classList.add('startmodal');
-  startmodal.classList.add('showmodal');
   startmodal.innerText = 'Start!';
-  startmodal.addEventListener('click', () => {
-    startmodal.classList.remove('showmodal');
-    space.classList.remove('blurimage');
-    time.starttimer();
-  });
 
   const tagmodal = document.createElement('div');
   tagmodal.classList.add('tagmodal');
-  space.addEventListener('click', (e) => {
-    const xcoord = e.clientX - 20;
-    const ycoord = e.clientY - 20;
-    tagmodal.style.left = `${xcoord}px`;
-    tagmodal.style.top = `${ycoord}px`;
-    tagmodal.classList.add('showmodal');
+
+  const dropdown = document.createElement('div');
+  dropdown.classList.add('dropdown');
+
+  const waldo = document.createElement('img');
+  waldo.classList.add('dropdownimages');
+  waldo.src = waldoimage;
+  dropdown.appendChild(waldo);
+
+  const odlaw = document.createElement('img');
+  odlaw.classList.add('dropdownimages');
+  odlaw.src = odlawimage;
+  dropdown.appendChild(odlaw);
+
+  const whitebeard = document.createElement('img');
+  whitebeard.classList.add('dropdownimages');
+  whitebeard.src = whitebeardimage;
+  dropdown.appendChild(whitebeard);
+
+  startmodal.addEventListener('click', () => {
+    startmodal.style.visibility = 'hidden';
+    space.classList.remove('blurimage');
+    time.starttimer();
+    space.addEventListener('click', (e) => {
+      const xcoord = e.clientX;
+      const ycoord = e.clientY;
+      tagmodal.style.left = `${xcoord - 20}px`;
+      tagmodal.style.top = `${ycoord - 20}px`;
+      tagmodal.style.visibility = 'visible';
+      dropdown.style.left = `${xcoord + 25}px`;
+      dropdown.style.top = `${ycoord - 20}px`;
+      dropdown.style.visibility = 'visible';
+    });
   });
 
   const backtohomebutton = document.getElementById('backtohomebutton');
@@ -41,6 +65,7 @@ const playSpace = () => {
   playcontainer.appendChild(space);
   playcontainer.appendChild(startmodal);
   playcontainer.appendChild(tagmodal);
+  playcontainer.appendChild(dropdown);
 
   content.appendChild(playcontainer);
 };
