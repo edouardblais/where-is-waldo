@@ -45,14 +45,19 @@ const playImage = (image) => {
     imageplayed.classList.remove('blurimage');
     time.starttimer();
     imageplayed.addEventListener('click', (e) => {
-      const xcoord = e.clientX;
-      const ycoord = e.clientY;
-      tagmodal.style.left = `${xcoord - 20}px`;
-      tagmodal.style.top = `${ycoord - 20}px`;
-      tagmodal.style.visibility = 'visible';
-      dropdown.style.left = `${xcoord + 25}px`;
-      dropdown.style.top = `${ycoord - 20}px`;
-      dropdown.style.visibility = 'visible';
+      if (e.target !== tagmodal && e.target !== dropdown && dropdown.style.visibility === 'visible') {
+        dropdown.style.visibility = 'hidden';
+        tagmodal.style.visibility = 'hidden';
+      } else {
+        const xcoord = e.clientX;
+        const ycoord = e.clientY;
+        tagmodal.style.left = `${xcoord - 20}px`;
+        tagmodal.style.top = `${ycoord - 20}px`;
+        tagmodal.style.visibility = 'visible';
+        dropdown.style.left = `${xcoord + 25}px`;
+        dropdown.style.top = `${ycoord - 20}px`;
+        dropdown.style.visibility = 'visible';
+      }
     });
   });
 
