@@ -48,7 +48,8 @@ body {
 .playheadercontainer {
     display: flex;
     flex-direction: row;
-    justify-content:space-between;
+    justify-content:center;
+    gap:20vw;
     align-items: center;
     font-size: 5vh;
     max-height: 7vh;
@@ -80,6 +81,30 @@ body {
 }
 
 .playimage {
-    max-width: 80vw;
-    max-height: 80vh;
+    max-width: 90vw;
+    max-height: 85vh;
+}
+
+.blurimage {
+    filter:blur(.5rem);
+}
+
+.startmodal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 1rem;
+    width: 5vw;
+    border-radius: 0.5rem;
+    text-align: center;
+    visibility: hidden;
+}
+
+.showmodal {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1.0);
+    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
 }

@@ -8,6 +8,7 @@ const playSpace = () => {
 
   const space = document.createElement('img');
   space.classList.add('playimage');
+  space.classList.add('blurimage');
   space.src = spaceimage;
   playcontainer.appendChild(space);
 

@@ -8,6 +8,7 @@ const playSnow = () => {
 
   const snow = document.createElement('img');
   snow.classList.add('playimage');
+  snow.classList.add('blurimage');
   snow.src = snowimage;
   playcontainer.appendChild(snow);
 

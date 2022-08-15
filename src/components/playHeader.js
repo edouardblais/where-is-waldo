@@ -1,7 +1,6 @@
 import waldoimage from '../images/waldo.png';
 import odlawimage from '../images/odlaw.png';
 import whitebeardimage from '../images/whitebeard.png';
-import timer from './timer';
 
 const homeHeader = () => {
   const content = document.getElementById('maincontent');
@@ -37,8 +36,6 @@ const homeHeader = () => {
   headercontainer.appendChild(backtohome);
 
   content.appendChild(headercontainer);
-
-  timer();
 };
 
 export default homeHeader;
