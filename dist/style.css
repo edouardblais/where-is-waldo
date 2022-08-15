@@ -99,7 +99,7 @@ body {
     width: 5vw;
     border-radius: 0.5rem;
     text-align: center;
-    visibility: hidden;
+    visibility: visible;
 }
 
 .tagmodal {
@@ -112,9 +112,19 @@ body {
     visibility: hidden;
 }
 
-.showmodal {
-    opacity: 1;
-    visibility: visible;
-    transform: scale(1.0);
-    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+.dropdown {
+    display: flex;
+    flex-direction: column;
+    height:130px;
+    width: auto;
+    border-radius: 0.5rem;
+    position:absolute;
+    visibility: hidden;
+    background-color: rgba(245, 247, 245, 0.7);
+    padding:3px;
+    gap:2px;
+}
+
+.dropdownimages {
+    max-height: 40px;
 }
