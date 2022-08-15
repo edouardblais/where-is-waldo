@@ -1,32 +1,31 @@
 const timer = () => {
-  let totalseconds = 0;
+  let totalcentiseconds = 0;
   let cron = null;
   const formatTimer = () => {
-    totalseconds += 1;
-    const hour = (Math.floor(totalseconds / 3600)).toLocaleString('en-US', {
+    totalcentiseconds += 1;
+    const minute = (Math.floor((totalcentiseconds) / 6000)).toLocaleString('en-US', {
       minimumIntegerDigits: 2,
+      maximumSignificantDigits: 2,
       useGrouping: false,
     });
-    const minute = (Math.floor((totalseconds - hour * 3600) / 60)).toLocaleString('en-US', {
+    const seconds = Math.floor(((totalcentiseconds - (minute * 6000)) / 100)).toLocaleString('en-US', {
       minimumIntegerDigits: 2,
+      maximumSignificantDigits: 2,
       useGrouping: false,
     });
-    const seconds = (totalseconds - (hour * 3600 + minute * 60)).toLocaleString('en-US', {
+    const centiseconds = Math.floor((totalcentiseconds - (seconds * 100 + minute * 6000))).toLocaleString('en-US', {
       minimumIntegerDigits: 2,
+      maximumSignificantDigits: 2,
       useGrouping: false,
     });
-    if (totalseconds !== 0) {
-      document.getElementById('timer').innerHTML = `${hour}:${minute}:${seconds}`;
-    } else {
-      document.getElementById('timer').innerHTML = '00:00:00';
-    }
+    document.getElementById('timer').innerHTML = `${minute}:${seconds}:${centiseconds}`;
   };
   const starttimer = () => {
-    cron = setInterval(formatTimer, 1000);
+    cron = setInterval(formatTimer, 10);
   };
   const stoptimer = () => {
     clearInterval(cron);
-    totalseconds = 0;
+    totalcentiseconds = 0;
     document.getElementById('timer').innerHTML = '00:00:00';
   };
   return { starttimer, stoptimer };
