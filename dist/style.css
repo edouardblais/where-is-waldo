@@ -49,7 +49,7 @@ body {
     display: flex;
     flex-direction: row;
     justify-content:center;
-    gap:20vw;
+    gap:15vw;
     align-items: center;
     font-size: 5vh;
     max-height: 7vh;
