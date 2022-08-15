@@ -25,7 +25,8 @@ const homeHeader = () => {
   imagescontainer.appendChild(whitebeard);
 
   const timercontainer = document.createElement('div');
-  timercontainer.innerHTML = timer();
+  timercontainer.id = 'timer';
+  timercontainer.innerHTML = '00:00:00';
 
   const backtohome = document.createElement('button');
   backtohome.innerText = 'Back To Home';
@@ -36,6 +37,8 @@ const homeHeader = () => {
   headercontainer.appendChild(backtohome);
 
   content.appendChild(headercontainer);
+
+  timer();
 };
 
 export default homeHeader;
