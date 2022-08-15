@@ -8,7 +8,6 @@ body {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    gap:2rem;
     width: 100vw;
     height: 100vh;
     align-items: center;
@@ -34,16 +33,35 @@ body {
 
 .homeimages {
     max-width:30vw;
-    max-height: auto;
+    height: auto;
 }
 
-.headercontainer {
+.homeheadercontainer {
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 5vh;
     max-height: 7vh;
     color: red;
+}
+
+.playheadercontainer {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    align-items: center;
+    font-size: 5vh;
+    max-height: 7vh;
+    min-width: 96vw;
+    padding: 1vh;
+}
+
+.headerimages {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap:1vw;
 }
 
 .footercontainer {
@@ -53,4 +71,15 @@ body {
     font-size: 2vh;
     max-height: 3vh;
     color: blue;
+}
+
+.playcontainer {
+    max-width: 90vw;
+    max-height: 90vh;
+    padding: 1vw;
+}
+
+.playimage {
+    max-width: 80vw;
+    max-height: 80vh;
 }

@@ -7,9 +7,10 @@ const homeHeader = () => {
   const content = document.getElementById('maincontent');
 
   const headercontainer = document.createElement('div');
-  headercontainer.classList.add('headercontainer');
+  headercontainer.classList.add('playheadercontainer');
 
   const imagescontainer = document.createElement('div');
+  imagescontainer.classList.add('headerimages');
 
   const waldo = document.createElement('img');
   waldo.src = waldoimage;
