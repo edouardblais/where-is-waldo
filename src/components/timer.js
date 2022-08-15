@@ -20,16 +20,18 @@ const timer = () => {
     } else {
       document.getElementById('timer').innerHTML = '00:00:00';
     }
-  };
-  const stoptimer = () => {
-    clearInterval(cron);
-    document.getElementById('timer').innerHTML = '00:00:00';
+    console.log(cron);
   };
   const starttimer = () => {
-    stoptimer();
     cron = setInterval(formatTimer, 1000);
   };
-  return { starttimer, stoptimer };
+  const stoptimer = () => {
+    console.log(cron);
+    clearInterval(cron);
+    totalseconds = 0;
+    document.getElementById('timer').innerHTML = '00:00:00';
+  };
+  return { starttimer, stoptimer, cron };
 };
 
 export default timer;

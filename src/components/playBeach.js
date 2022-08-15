@@ -2,6 +2,7 @@ import beachimage from '../images/beach.jpg';
 import timer from './timer';
 
 const playBeach = () => {
+  const time = timer();
   const content = document.getElementById('maincontent');
 
   const playcontainer = document.createElement('div');
@@ -19,8 +20,12 @@ const playBeach = () => {
   startmodal.addEventListener('click', () => {
     startmodal.classList.remove('showmodal');
     beach.classList.remove('blurimage');
-    const time = timer();
     time.starttimer();
+  });
+
+  const backtohomebutton = document.getElementById('backtohomebutton');
+  backtohomebutton.addEventListener('click', () => {
+    time.stoptimer();
   });
 
   playcontainer.appendChild(beach);

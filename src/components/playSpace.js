@@ -2,6 +2,7 @@ import spaceimage from '../images/space.jpg';
 import timer from './timer';
 
 const playSpace = () => {
+  const time = timer();
   const content = document.getElementById('maincontent');
 
   const playcontainer = document.createElement('div');
@@ -19,8 +20,12 @@ const playSpace = () => {
   startmodal.addEventListener('click', () => {
     startmodal.classList.remove('showmodal');
     space.classList.remove('blurimage');
-    const time = timer();
     time.starttimer();
+  });
+
+  const backtohomebutton = document.getElementById('backtohomebutton');
+  backtohomebutton.addEventListener('click', () => {
+    time.stoptimer();
   });
 
   playcontainer.appendChild(space);
