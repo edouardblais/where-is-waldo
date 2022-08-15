@@ -102,6 +102,16 @@ body {
     visibility: hidden;
 }
 
+.tagmodal {
+    background-color: transparent;
+    border-radius: 100%;
+    border: 2px solid black;
+    width:40px;
+    height:40px;
+    position:absolute;
+    visibility: hidden;
+}
+
 .showmodal {
     opacity: 1;
     visibility: visible;
