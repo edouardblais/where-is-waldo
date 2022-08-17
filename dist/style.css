@@ -52,7 +52,7 @@ body {
     gap:15vw;
     align-items: center;
     font-size: 5vh;
-    max-height: 7vh;
+    max-height: 5vh;
     min-width: 96vw;
     padding: 1vh;
 }
@@ -63,6 +63,7 @@ body {
     align-items: center;
     justify-content: flex-start;
     gap:1vw;
+    max-height: 5vh;
 }
 
 .footercontainer {
@@ -81,8 +82,8 @@ body {
 }
 
 .playimage {
-    max-width: 90vw;
-    max-height: 85vh;
+    width: 1200px;
+    height: 774px;
 }
 
 .blurimage {

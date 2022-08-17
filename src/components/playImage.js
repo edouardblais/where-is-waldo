@@ -40,27 +40,6 @@ const playImage = (image) => {
   whitebeard.src = whitebeardimage;
   dropdown.appendChild(whitebeard);
 
-  startmodal.addEventListener('click', () => {
-    startmodal.style.visibility = 'hidden';
-    imageplayed.classList.remove('blurimage');
-    time.starttimer();
-    imageplayed.addEventListener('click', (e) => {
-      if (e.target !== tagmodal && e.target !== dropdown && dropdown.style.visibility === 'visible') {
-        dropdown.style.visibility = 'hidden';
-        tagmodal.style.visibility = 'hidden';
-      } else {
-        const xcoord = e.clientX;
-        const ycoord = e.clientY;
-        tagmodal.style.left = `${xcoord - 20}px`;
-        tagmodal.style.top = `${ycoord - 20}px`;
-        tagmodal.style.visibility = 'visible';
-        dropdown.style.left = `${xcoord + 25}px`;
-        dropdown.style.top = `${ycoord - 20}px`;
-        dropdown.style.visibility = 'visible';
-      }
-    });
-  });
-
   const backtohomebutton = document.getElementById('backtohomebutton');
   backtohomebutton.addEventListener('click', () => {
     time.stoptimer();
@@ -72,6 +51,34 @@ const playImage = (image) => {
   playcontainer.appendChild(dropdown);
 
   content.appendChild(playcontainer);
+
+  /* const imagecoord = imageplayed.getBoundingClientRect();
+  const imagecoordleft = imagecoord.left;
+  const imagecoordtop = imagecoord.top;
+  console.log(imagecoordleft, imagecoordtop); */
+
+  startmodal.addEventListener('click', () => {
+    startmodal.style.visibility = 'hidden';
+    imageplayed.classList.remove('blurimage');
+    time.starttimer();
+    imageplayed.addEventListener('click', (e) => {
+      if (e.target !== tagmodal && e.target !== dropdown && dropdown.style.visibility === 'visible') {
+        dropdown.style.visibility = 'hidden';
+        tagmodal.style.visibility = 'hidden';
+      } else {
+        const xcoord = e.clientX + window.scrollX;
+        // console.log(xcoord);
+        const ycoord = e.clientY + window.scrollY;
+        // console.log(ycoord);
+        tagmodal.style.left = `${xcoord - 20}px`;
+        tagmodal.style.top = `${ycoord - 20}px`;
+        tagmodal.style.visibility = 'visible';
+        dropdown.style.left = `${xcoord + 25}px`;
+        dropdown.style.top = `${ycoord - 20}px`;
+        dropdown.style.visibility = 'visible';
+      }
+    });
+  });
 };
 
 export default playImage;
