@@ -2,8 +2,11 @@ import waldoimage from '../images/waldo.png';
 import odlawimage from '../images/odlaw.png';
 import whitebeardimage from '../images/whitebeard.png';
 import timer from './timer';
+import firebasePositions from './firebasePositions';
 
 const playImage = (image) => {
+  console.log(firebasePositions.hiddenPositions);
+
   const time = timer();
   const content = document.getElementById('maincontent');
 
@@ -52,7 +55,8 @@ const playImage = (image) => {
 
   content.appendChild(playcontainer);
 
-  /* const imagecoord = imageplayed.getBoundingClientRect();
+  /* The following code was to get the hidden positions when creating position.js:
+  const imagecoord = imageplayed.getBoundingClientRect();
   const imagecoordleft = imagecoord.left;
   const imagecoordtop = imagecoord.top;
   console.log(imagecoordleft, imagecoordtop); */
@@ -67,9 +71,7 @@ const playImage = (image) => {
         tagmodal.style.visibility = 'hidden';
       } else {
         const xcoord = e.clientX + window.scrollX;
-        // console.log(xcoord);
         const ycoord = e.clientY + window.scrollY;
-        // console.log(ycoord);
         tagmodal.style.left = `${xcoord - 20}px`;
         tagmodal.style.top = `${ycoord - 20}px`;
         tagmodal.style.visibility = 'visible';

@@ -1,4 +1,3 @@
-import { initializeApp } from 'firebase/app';
 import homePage from './components/homePage';
 import homeHeader from './components/homeHeader';
 import footer from './components/footer';
@@ -8,17 +7,6 @@ import showLeaderboard from './components/showLeaderboard';
 import beachimage from './images/beach.jpg';
 import snowimage from './images/snow.jpg';
 import spaceimage from './images/space.jpg';
-
-const firebaseConfig = {
-  apiKey: 'AIzaSyAJi8yQ5LOymO6_qGx80ztG294zXujmGgg',
-  authDomain: 'waldo-3e003.firebaseapp.com',
-  projectId: 'waldo-3e003',
-  storageBucket: 'waldo-3e003.appspot.com',
-  messagingSenderId: '480350558276',
-  appId: '1:480350558276:web:d7b280f31e65d124838411',
-};
-
-const app = initializeApp(firebaseConfig);
 
 homePage();
 
