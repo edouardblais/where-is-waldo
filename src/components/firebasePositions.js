@@ -3,7 +3,7 @@ import {
   getFirestore, addDoc, collection, getDocs,
 } from 'firebase/firestore/lite';
 
-const firebasePositions = (async () => {
+const firebasePositions = async () => {
   const firebaseConfig = {
     apiKey: 'AIzaSyAJi8yQ5LOymO6_qGx80ztG294zXujmGgg',
     authDomain: 'waldo-3e003.firebaseapp.com',
@@ -33,8 +33,7 @@ const firebasePositions = (async () => {
 
   const getPositions = await getDocs(collection(db, 'positions'));
   const hiddenPositions = getPositions.docs.map((doc) => doc.data());
-
-  return { hiddenPositions };
-})();
+  return hiddenPositions;
+};
 
 export default firebasePositions;

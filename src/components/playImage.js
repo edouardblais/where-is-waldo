@@ -5,7 +5,13 @@ import timer from './timer';
 import firebasePositions from './firebasePositions';
 
 const playImage = (image) => {
-  console.log(firebasePositions.hiddenPositions);
+  let positions = null;
+  const foundCharacters = [];
+
+  // import the position data from the firestore
+  firebasePositions().then((response) => {
+    positions = response;
+  });
 
   const time = timer();
   const content = document.getElementById('maincontent');
@@ -62,16 +68,36 @@ const playImage = (image) => {
   console.log(imagecoordleft, imagecoordtop); */
 
   startmodal.addEventListener('click', () => {
+    // Starts the game
     startmodal.style.visibility = 'hidden';
     imageplayed.classList.remove('blurimage');
     time.starttimer();
     imageplayed.addEventListener('click', (e) => {
+      // Get the clicks position
+      const xcoord = e.clientX + window.scrollX;
+      const ycoord = e.clientY + window.scrollY;
+
+      // Removes tagmodal and dropdown when clicking outside them
       if (e.target !== tagmodal && e.target !== dropdown && dropdown.style.visibility === 'visible') {
         dropdown.style.visibility = 'hidden';
         tagmodal.style.visibility = 'hidden';
+
+      // If the user picks the character in the dropdown when the previous click
+      // was within the acceptable range of the characters position, and if that character
+      // has not been found already, it is added to hiddenCharacters array.
+      // If the array is completed, the game is over, the timer is stopped,
+      // and the time is recorded and added to the leaderboard collection.
+      } else if (
+        (e.target === (whitebeard || odlaw || waldo))
+           && (!foundCharacters.includes(e.target))
+      ) {
+        foundCharacters.push(e.target);
+        dropdown.style.visibility = 'hidden';
+        tagmodal.style.visibility = 'hidden';
+
+      // When the tagmodal and dropdown are not displayed, a click on the image
+      // will make them appear at the clicks location.
       } else {
-        const xcoord = e.clientX + window.scrollX;
-        const ycoord = e.clientY + window.scrollY;
         tagmodal.style.left = `${xcoord - 20}px`;
         tagmodal.style.top = `${ycoord - 20}px`;
         tagmodal.style.visibility = 'visible';
