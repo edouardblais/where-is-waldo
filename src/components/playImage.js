@@ -36,16 +36,19 @@ const playImage = (image) => {
 
   const waldo = document.createElement('img');
   waldo.classList.add('dropdownimages');
+  waldo.id = 'dropdownwaldo';
   waldo.src = waldoimage;
   dropdown.appendChild(waldo);
 
   const odlaw = document.createElement('img');
   odlaw.classList.add('dropdownimages');
+  odlaw.id = 'dropdownodlaw';
   odlaw.src = odlawimage;
   dropdown.appendChild(odlaw);
 
   const whitebeard = document.createElement('img');
   whitebeard.classList.add('dropdownimages');
+  whitebeard.id = 'dropdownwhitebeard';
   whitebeard.src = whitebeardimage;
   dropdown.appendChild(whitebeard);
 
@@ -72,26 +75,16 @@ const playImage = (image) => {
     startmodal.style.visibility = 'hidden';
     imageplayed.classList.remove('blurimage');
     time.starttimer();
+    let xcoord = null;
+    let ycoord = null;
+
     imageplayed.addEventListener('click', (e) => {
       // Get the clicks position
-      const xcoord = e.clientX + window.scrollX;
-      const ycoord = e.clientY + window.scrollY;
+      xcoord = e.clientX + window.scrollX;
+      ycoord = e.clientY + window.scrollY;
 
       // Removes tagmodal and dropdown when clicking outside them
       if (e.target !== tagmodal && e.target !== dropdown && dropdown.style.visibility === 'visible') {
-        dropdown.style.visibility = 'hidden';
-        tagmodal.style.visibility = 'hidden';
-
-      // If the user picks the character in the dropdown when the previous click
-      // was within the acceptable range of the characters position, and if that character
-      // has not been found already, it is added to hiddenCharacters array.
-      // If the array is completed, the game is over, the timer is stopped,
-      // and the time is recorded and added to the leaderboard collection.
-      } else if (
-        (e.target === (whitebeard || odlaw || waldo))
-           && (!foundCharacters.includes(e.target))
-      ) {
-        foundCharacters.push(e.target);
         dropdown.style.visibility = 'hidden';
         tagmodal.style.visibility = 'hidden';
 
@@ -104,6 +97,15 @@ const playImage = (image) => {
         dropdown.style.left = `${xcoord + 25}px`;
         dropdown.style.top = `${ycoord - 20}px`;
         dropdown.style.visibility = 'visible';
+      }
+    });
+
+    dropdown.addEventListener('click', (e) => {
+      if ((e.target === waldo || odlaw || whitebeard) && (!foundCharacters.includes(e.target.id))) {
+        foundCharacters.push(e.target.id);
+        dropdown.style.visibility = 'hidden';
+        tagmodal.style.visibility = 'hidden';
+        console.log(foundCharacters);
       }
     });
   });
