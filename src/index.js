@@ -4,9 +4,9 @@ import footer from './components/footer';
 import playHeader from './components/playHeader';
 import playImage from './components/playImage';
 import showLeaderboard from './components/showLeaderboard';
-import beachimage from './images/beach.jpg';
-import snowimage from './images/snow.jpg';
-import spaceimage from './images/space.jpg';
+import Beach from './images/beach.jpg';
+import Snow from './images/snow.jpg';
+import Space from './images/space.jpg';
 
 homePage();
 
@@ -17,17 +17,17 @@ document.addEventListener('click', (e) => {
   if (target === 'beachimage') {
     content.innerHTML = '';
     playHeader();
-    playImage(beachimage);
+    playImage(Beach);
     footer();
   } else if (target === 'snowimage') {
     content.innerHTML = '';
     playHeader();
-    playImage(snowimage);
+    playImage(Snow);
     footer();
   } else if (target === 'spaceimage') {
     content.innerHTML = '';
     playHeader();
-    playImage(spaceimage);
+    playImage(Space);
     footer();
   } else if (target === 'leaderboardbutton') {
     content.innerHTML = '';

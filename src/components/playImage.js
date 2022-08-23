@@ -6,12 +6,18 @@ import firebasePositions from './firebasePositions';
 
 const playImage = (image) => {
   let positions = null;
+
   const foundCharacters = [];
 
   // import the position data from the firestore
   firebasePositions().then((response) => {
     positions = response;
   });
+
+  // function to check if tow numbers are within desired range
+  const isWithinRange = (num1, num2) => {
+    if (num1 + 10 <= num2) return true;
+  };
 
   const time = timer();
   const content = document.getElementById('maincontent');
@@ -102,6 +108,7 @@ const playImage = (image) => {
 
     dropdown.addEventListener('click', (e) => {
       if ((e.target === waldo || odlaw || whitebeard) && (!foundCharacters.includes(e.target.id))) {
+        // if (isWithinRange(xcoord, position[0].Position.`${image}`.))
         foundCharacters.push(e.target.id);
         dropdown.style.visibility = 'hidden';
         tagmodal.style.visibility = 'hidden';
