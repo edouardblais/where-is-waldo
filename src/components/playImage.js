@@ -15,8 +15,14 @@ const playImage = (image) => {
   });
 
   // function to check if tow numbers are within desired range
-  const isWithinRange = (num1, num2) => {
-    if (num1 + 10 <= num2) return true;
+  const isWithinRange = (xclick, xdata, yclick, ydata) => {
+    if ((xclick <= xdata + 100)
+         && (xclick >= xdata - 100)
+         && (yclick <= ydata + 100)
+         && (yclick >= ydata - 100)
+    ) {
+      return true;
+    }
   };
 
   const time = timer();
@@ -107,12 +113,55 @@ const playImage = (image) => {
     });
 
     dropdown.addEventListener('click', (e) => {
-      if ((e.target === waldo || odlaw || whitebeard) && (!foundCharacters.includes(e.target.id))) {
-        // if (isWithinRange(xcoord, position[0].Position.`${image}`.))
-        foundCharacters.push(e.target.id);
-        dropdown.style.visibility = 'hidden';
-        tagmodal.style.visibility = 'hidden';
-        console.log(foundCharacters);
+      // Giving variables to the positions to facilitate further checking for spotted character
+      const beachWaldoLeft = positions[0].Position.Beach.Waldo.left;
+      const beachWaldoTop = positions[0].Position.Beach.Waldo.top;
+      const beachOdlawLeft = positions[0].Position.Beach.Odlaw.left;
+      const beachOdlawTop = positions[0].Position.Beach.Odlaw.top;
+      const beachWhitebeardLeft = positions[0].Position.Beach.Whitebeard.left;
+      const beachWhitebeardTop = positions[0].Position.Beach.Whitebeard.top;
+
+      const snowWaldoLeft = positions[0].Position.Snow.Waldo.left;
+      const snowWaldoTop = positions[0].Position.Snow.Waldo.top;
+      const snowOdlawLeft = positions[0].Position.Snow.Odlaw.left;
+      const snowOdlawTop = positions[0].Position.Snow.Odlaw.top;
+      const snowWhitebeardLeft = positions[0].Position.Snow.Whitebeard.left;
+      const snowWhitebeardTop = positions[0].Position.Snow.Whitebeard.top;
+
+      const spaceWaldoLeft = positions[0].Position.Space.Waldo.left;
+      const spaceWaldoTop = positions[0].Position.Space.Waldo.top;
+      const spaceOdlawLeft = positions[0].Position.Space.Odlaw.left;
+      const spaceOdlawTop = positions[0].Position.Space.Odlaw.top;
+      const spaceWhitebeardLeft = positions[0].Position.Space.Whitebeard.left;
+      const spaceWhitebeardTop = positions[0].Position.Space.Whitebeard.top;
+
+      if ((e.target === waldo) && (!foundCharacters.includes(e.target.id))) {
+        if ((isWithinRange(xcoord, beachWaldoLeft, ycoord, beachWaldoTop))
+            || (isWithinRange(xcoord, snowWaldoLeft, ycoord, snowWaldoTop))
+            || (isWithinRange(xcoord, spaceWaldoLeft, ycoord, spaceWaldoTop))) {
+          foundCharacters.push(e.target.id);
+          dropdown.style.visibility = 'hidden';
+          tagmodal.style.visibility = 'hidden';
+          console.log(foundCharacters);
+        }
+      } else if ((e.target === odlaw) && (!foundCharacters.includes(e.target.id))) {
+        if ((isWithinRange(xcoord, beachOdlawLeft, ycoord, beachOdlawTop))
+            || (isWithinRange(xcoord, snowOdlawLeft, ycoord, snowOdlawTop))
+            || (isWithinRange(xcoord, spaceOdlawLeft, ycoord, spaceOdlawTop))) {
+          foundCharacters.push(e.target.id);
+          dropdown.style.visibility = 'hidden';
+          tagmodal.style.visibility = 'hidden';
+          console.log(foundCharacters);
+        }
+      } else if ((e.target === whitebeard) && (!foundCharacters.includes(e.target.id))) {
+        if ((isWithinRange(xcoord, beachWhitebeardLeft, ycoord, beachWhitebeardTop))
+            || (isWithinRange(xcoord, snowWhitebeardLeft, ycoord, snowWhitebeardTop))
+            || (isWithinRange(xcoord, spaceWhitebeardLeft, ycoord, spaceWhitebeardTop))) {
+          foundCharacters.push(e.target.id);
+          dropdown.style.visibility = 'hidden';
+          tagmodal.style.visibility = 'hidden';
+          console.log(foundCharacters);
+        }
       }
     });
   });
