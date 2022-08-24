@@ -135,6 +135,12 @@ const playImage = (image) => {
       const spaceWhitebeardLeft = positions[0].Position.Space.Whitebeard.left;
       const spaceWhitebeardTop = positions[0].Position.Space.Whitebeard.top;
 
+      // Getting the header images for spotted character displaying to the user
+      const waldoHeader = document.getElementById('waldoheader');
+      const odlawHeader = document.getElementById('odlawheader');
+      const whitebeardHeader = document.getElementById('whitebeardheader');
+
+      // Verification if clicked point corresponds to chosen hidden character
       if ((e.target === waldo) && (!foundCharacters.includes(e.target.id))) {
         if ((isWithinRange(xcoord, beachWaldoLeft, ycoord, beachWaldoTop))
             || (isWithinRange(xcoord, snowWaldoLeft, ycoord, snowWaldoTop))
@@ -142,7 +148,7 @@ const playImage = (image) => {
           foundCharacters.push(e.target.id);
           dropdown.style.visibility = 'hidden';
           tagmodal.style.visibility = 'hidden';
-          console.log(foundCharacters);
+          waldoHeader.classList.add('blurimage');
         }
       } else if ((e.target === odlaw) && (!foundCharacters.includes(e.target.id))) {
         if ((isWithinRange(xcoord, beachOdlawLeft, ycoord, beachOdlawTop))
@@ -151,7 +157,7 @@ const playImage = (image) => {
           foundCharacters.push(e.target.id);
           dropdown.style.visibility = 'hidden';
           tagmodal.style.visibility = 'hidden';
-          console.log(foundCharacters);
+          odlawHeader.classList.add('blurimage');
         }
       } else if ((e.target === whitebeard) && (!foundCharacters.includes(e.target.id))) {
         if ((isWithinRange(xcoord, beachWhitebeardLeft, ycoord, beachWhitebeardTop))
@@ -160,7 +166,7 @@ const playImage = (image) => {
           foundCharacters.push(e.target.id);
           dropdown.style.visibility = 'hidden';
           tagmodal.style.visibility = 'hidden';
-          console.log(foundCharacters);
+          whitebeardHeader.classList.add('blurimage');
         }
       }
     });

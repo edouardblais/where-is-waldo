@@ -12,14 +12,17 @@ const homeHeader = () => {
   imagescontainer.classList.add('headerimages');
 
   const waldo = document.createElement('img');
+  waldo.id = 'waldoheader';
   waldo.src = waldoimage;
   imagescontainer.appendChild(waldo);
 
   const odlaw = document.createElement('img');
+  odlaw.id = 'odlawheader';
   odlaw.src = odlawimage;
   imagescontainer.appendChild(odlaw);
 
   const whitebeard = document.createElement('img');
+  whitebeard.id = 'whitebeardheader';
   whitebeard.src = whitebeardimage;
   imagescontainer.appendChild(whitebeard);
 
