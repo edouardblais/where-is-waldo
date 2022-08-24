@@ -33,6 +33,7 @@ const homeHeader = () => {
   const backtohome = document.createElement('button');
   backtohome.innerText = 'Back To Home';
   backtohome.id = 'backtohomebutton';
+  backtohome.classList.add('button');
 
   headercontainer.appendChild(imagescontainer);
   headercontainer.appendChild(timercontainer);

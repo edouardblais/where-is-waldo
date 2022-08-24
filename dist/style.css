@@ -129,3 +129,40 @@ body {
 .dropdownimages {
     max-height: 40px;
 }
+
+.winningmodal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 1rem;
+    max-width: 20vw;
+    min-height: 10vh;
+    border-radius: 0.5rem;
+    text-align: center;
+    font-size: 2em;
+    display: flex;
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    padding: 10px;
+    align-items:center;
+}
+
+.inputname {
+    width: 20vw;
+    border-radius: .5em;
+    font-size: 16px;
+}
+
+.button {
+    background-color: #dc2626;
+    color: white;
+    font-weight: 700;
+    font-size:20px;
+    text-align: center;
+    border: 2px solid #991b1b;
+    border-radius: .5em;
+}

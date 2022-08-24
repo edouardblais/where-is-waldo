@@ -1,3 +1,7 @@
+import {
+  addDoc, collection, getFirestore,
+} from 'firebase/firestore/lite';
+import { initializeApp } from 'firebase/app';
 import waldoimage from '../images/waldo.png';
 import odlawimage from '../images/odlaw.png';
 import whitebeardimage from '../images/whitebeard.png';
@@ -7,7 +11,24 @@ import firebasePositions from './firebasePositions';
 const playImage = (image) => {
   let positions = null;
 
+  const time = timer();
+
   const foundCharacters = [];
+
+  const content = document.getElementById('maincontent');
+
+  const firebaseConfig = {
+    apiKey: 'AIzaSyAJi8yQ5LOymO6_qGx80ztG294zXujmGgg',
+    authDomain: 'waldo-3e003.firebaseapp.com',
+    projectId: 'waldo-3e003',
+    storageBucket: 'waldo-3e003.appspot.com',
+    messagingSenderId: '480350558276',
+    appId: '1:480350558276:web:d7b280f31e65d124838411',
+  };
+
+  const app = initializeApp(firebaseConfig);
+
+  const db = getFirestore(app);
 
   // import the position data from the firestore
   firebasePositions().then((response) => {
@@ -25,8 +46,58 @@ const playImage = (image) => {
     }
   };
 
-  const time = timer();
-  const content = document.getElementById('maincontent');
+  // To be called after each good pick to see if game is over and take further appropriate actions
+  const hasWon = () => {
+    if (foundCharacters.length === 3) {
+      time.stoptimer();
+      const winningTime = time.getTime();
+      const timeSent = (winningTime.minute * 60 * 100)
+      + (winningTime.seconds * 100)
+      + (winningTime.centiseconds);
+
+      const winningmodal = document.createElement('div');
+      winningmodal.classList.add('winningmodal');
+      winningmodal.innerHTML = `You found them all!\nYour time is ${winningTime.minute}:${winningTime.seconds}:${winningTime.centiseconds}`;
+
+      const inputname = document.createElement('input');
+      inputname.placeholder = 'Please enter your name!';
+      inputname.classList.add('inputname');
+
+      const addscore = document.createElement('button');
+      addscore.classList.add('button');
+      addscore.innerText = 'Add Score';
+
+      const leaderboard = document.createElement('button');
+      leaderboard.classList.add('button');
+      leaderboard.innerText = 'See Leaderboard';
+
+      const playagain = document.createElement('button');
+      playagain.classList.add('button');
+      playagain.innerText = 'Play Again';
+
+      winningmodal.appendChild(inputname);
+      winningmodal.appendChild(addscore);
+      winningmodal.appendChild(leaderboard);
+      winningmodal.appendChild(playagain);
+      content.appendChild(winningmodal);
+
+      addscore.addEventListener('click', async () => {
+        const scoreName = inputname.value;
+        if (scoreName === '') {
+          inputname.placeholder.style.color = 'red';
+        } else {
+          try {
+            const docRef = await addDoc(collection(db, 'leaderboard'), {
+              scoreName: timeSent,
+            });
+            console.log(docRef.id);
+          } catch (e) {
+            console.log('Error adding to collection:', e);
+          }
+        }
+      });
+    }
+  };
 
   const playcontainer = document.createElement('div');
   playcontainer.classList.add('playcontainer');
@@ -149,6 +220,7 @@ const playImage = (image) => {
           dropdown.style.visibility = 'hidden';
           tagmodal.style.visibility = 'hidden';
           waldoHeader.classList.add('blurimage');
+          hasWon();
         }
       } else if ((e.target === odlaw) && (!foundCharacters.includes(e.target.id))) {
         if ((isWithinRange(xcoord, beachOdlawLeft, ycoord, beachOdlawTop))
@@ -158,6 +230,7 @@ const playImage = (image) => {
           dropdown.style.visibility = 'hidden';
           tagmodal.style.visibility = 'hidden';
           odlawHeader.classList.add('blurimage');
+          hasWon();
         }
       } else if ((e.target === whitebeard) && (!foundCharacters.includes(e.target.id))) {
         if ((isWithinRange(xcoord, beachWhitebeardLeft, ycoord, beachWhitebeardTop))
@@ -167,6 +240,7 @@ const playImage = (image) => {
           dropdown.style.visibility = 'hidden';
           tagmodal.style.visibility = 'hidden';
           whitebeardHeader.classList.add('blurimage');
+          hasWon();
         }
       }
     });

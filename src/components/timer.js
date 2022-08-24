@@ -1,7 +1,8 @@
 const timer = () => {
   let totalcentiseconds = 0;
   let cron = null;
-  const formatTimer = () => {
+
+  const getTime = () => {
     totalcentiseconds += 1;
     const minute = (Math.floor((totalcentiseconds) / 6000)).toLocaleString('en-US', {
       minimumIntegerDigits: 2,
@@ -19,16 +20,19 @@ const timer = () => {
       useGrouping: false,
     });
     document.getElementById('timer').innerHTML = `${minute}:${seconds}:${centiseconds}`;
+
+    return { minute, seconds, centiseconds };
   };
+
   const starttimer = () => {
-    cron = setInterval(formatTimer, 10);
+    cron = setInterval(getTime, 10);
   };
+
   const stoptimer = () => {
     clearInterval(cron);
-    totalcentiseconds = 0;
-    document.getElementById('timer').innerHTML = '00:00:00';
   };
-  return { starttimer, stoptimer };
+
+  return { starttimer, stoptimer, getTime };
 };
 
 export default timer;
