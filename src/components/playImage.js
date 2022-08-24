@@ -35,7 +35,7 @@ const playImage = (image) => {
     positions = response;
   });
 
-  // function to check if tow numbers are within desired range
+  // To check if tow numbers are within desired range
   const isWithinRange = (xclick, xdata, yclick, ydata) => {
     if ((xclick <= xdata + 100)
          && (xclick >= xdata - 100)
@@ -44,6 +44,19 @@ const playImage = (image) => {
     ) {
       return true;
     }
+  };
+
+  // To get the appropriate image for the upcoming adding to leaderboard logic
+  const getImage = (source) => {
+    let thisImage = '';
+    if (source.endsWith('3745.jpg')) {
+      thisImage = 'beach';
+    } else if (source.endsWith('67a0.jpg')) {
+      thisImage = 'snow';
+    } else if (source.endsWith('2d40.jpg')) {
+      thisImage = 'space';
+    }
+    return thisImage;
   };
 
   // To be called after each good pick to see if game is over and take further appropriate actions
@@ -81,16 +94,22 @@ const playImage = (image) => {
       winningmodal.appendChild(playagain);
       content.appendChild(winningmodal);
 
+      let scoreName = '';
+      inputname.addEventListener('input', (e) => {
+        scoreName = e.target.value;
+      });
+
       addscore.addEventListener('click', async () => {
-        const scoreName = inputname.value;
+        const thisImage = getImage(image);
         if (scoreName === '') {
           inputname.placeholder.style.color = 'red';
         } else {
           try {
-            const docRef = await addDoc(collection(db, 'leaderboard'), {
-              scoreName: timeSent,
+            await addDoc(collection(db, 'leaderboard'), {
+              Image: thisImage,
+              Name: scoreName,
+              Time: timeSent,
             });
-            console.log(docRef.id);
           } catch (e) {
             console.log('Error adding to collection:', e);
           }
