@@ -37,23 +37,25 @@ const playImage = (image) => {
 
   // To check if tow numbers are within desired range
   const isWithinRange = (xclick, xdata, yclick, ydata) => {
-    if ((xclick <= xdata + 100)
-         && (xclick >= xdata - 100)
-         && (yclick <= ydata + 100)
-         && (yclick >= ydata - 100)
+    if ((xclick <= xdata + 20)
+         && (xclick >= xdata - 20)
+         && (yclick <= ydata + 20)
+         && (yclick >= ydata - 20)
     ) {
+      console.log(xclick, xdata, yclick, ydata);
       return true;
     }
+    return false;
   };
 
   // To get the appropriate image for the upcoming adding to leaderboard logic
   const getImage = (source) => {
     let thisImage = '';
-    if (source.endsWith('3745.jpg')) {
+    if (source.endsWith('a3745.jpg')) {
       thisImage = 'beach';
-    } else if (source.endsWith('67a0.jpg')) {
+    } else if (source.endsWith('e67a0.jpg')) {
       thisImage = 'snow';
-    } else if (source.endsWith('2d40.jpg')) {
+    } else if (source.endsWith('52d40.jpg')) {
       thisImage = 'space';
     }
     return thisImage;
@@ -225,42 +227,46 @@ const playImage = (image) => {
       const spaceWhitebeardLeft = positions[0].Position.Space.Whitebeard.left;
       const spaceWhitebeardTop = positions[0].Position.Space.Whitebeard.top;
 
-      // Getting the header images for spotted character displaying to the user
+      // Getting the header images to blur spotted character in further logic
       const waldoHeader = document.getElementById('waldoheader');
       const odlawHeader = document.getElementById('odlawheader');
       const whitebeardHeader = document.getElementById('whitebeardheader');
 
-      // Verification if clicked point corresponds to chosen hidden character
-      if ((e.target === waldo) && (!foundCharacters.includes(e.target.id))) {
-        if ((isWithinRange(xcoord, beachWaldoLeft, ycoord, beachWaldoTop))
-            || (isWithinRange(xcoord, snowWaldoLeft, ycoord, snowWaldoTop))
-            || (isWithinRange(xcoord, spaceWaldoLeft, ycoord, spaceWaldoTop))) {
-          foundCharacters.push(e.target.id);
-          dropdown.style.visibility = 'hidden';
-          tagmodal.style.visibility = 'hidden';
-          waldoHeader.classList.add('blurimage');
-          hasWon();
-        }
-      } else if ((e.target === odlaw) && (!foundCharacters.includes(e.target.id))) {
-        if ((isWithinRange(xcoord, beachOdlawLeft, ycoord, beachOdlawTop))
-            || (isWithinRange(xcoord, snowOdlawLeft, ycoord, snowOdlawTop))
-            || (isWithinRange(xcoord, spaceOdlawLeft, ycoord, spaceOdlawTop))) {
-          foundCharacters.push(e.target.id);
-          dropdown.style.visibility = 'hidden';
-          tagmodal.style.visibility = 'hidden';
-          odlawHeader.classList.add('blurimage');
-          hasWon();
-        }
-      } else if ((e.target === whitebeard) && (!foundCharacters.includes(e.target.id))) {
-        if ((isWithinRange(xcoord, beachWhitebeardLeft, ycoord, beachWhitebeardTop))
-            || (isWithinRange(xcoord, snowWhitebeardLeft, ycoord, snowWhitebeardTop))
-            || (isWithinRange(xcoord, spaceWhitebeardLeft, ycoord, spaceWhitebeardTop))) {
-          foundCharacters.push(e.target.id);
-          dropdown.style.visibility = 'hidden';
-          tagmodal.style.visibility = 'hidden';
-          whitebeardHeader.classList.add('blurimage');
-          hasWon();
-        }
+      // Verification if clicked location on image corresponds to chosen hidden character
+      const thisimage = getImage(image);
+      if ((e.target === waldo)
+        && (!foundCharacters.includes(e.target.id))
+        && ((isWithinRange(xcoord, beachWaldoLeft, ycoord, beachWaldoTop) && (thisimage === 'beach'))
+            || (isWithinRange(xcoord, snowWaldoLeft, ycoord, snowWaldoTop) && (thisimage === 'snow'))
+            || (isWithinRange(xcoord, spaceWaldoLeft, ycoord, spaceWaldoTop) && (thisimage === 'space')))) {
+        foundCharacters.push(e.target.id);
+        dropdown.style.visibility = 'hidden';
+        tagmodal.style.visibility = 'hidden';
+        waldoHeader.classList.add('blurimage');
+        hasWon();
+      } else if ((e.target === odlaw)
+        && (!foundCharacters.includes(e.target.id))
+        && ((isWithinRange(xcoord, beachOdlawLeft, ycoord, beachOdlawTop) && (thisimage === 'beach'))
+            || (isWithinRange(xcoord, snowOdlawLeft, ycoord, snowOdlawTop) && (thisimage === 'snow'))
+            || (isWithinRange(xcoord, spaceOdlawLeft, ycoord, spaceOdlawTop) && (thisimage === 'space')))) {
+        foundCharacters.push(e.target.id);
+        dropdown.style.visibility = 'hidden';
+        tagmodal.style.visibility = 'hidden';
+        odlawHeader.classList.add('blurimage');
+        hasWon();
+      } else if ((e.target === whitebeard)
+        && (!foundCharacters.includes(e.target.id))
+        && ((isWithinRange(xcoord, beachWhitebeardLeft, ycoord, beachWhitebeardTop) && (thisimage === 'beach'))
+            || (isWithinRange(xcoord, snowWhitebeardLeft, ycoord, snowWhitebeardTop) && (thisimage === 'snow'))
+            || (isWithinRange(xcoord, spaceWhitebeardLeft, ycoord, spaceWhitebeardTop) && (thisimage === 'space')))) {
+        foundCharacters.push(e.target.id);
+        dropdown.style.visibility = 'hidden';
+        tagmodal.style.visibility = 'hidden';
+        whitebeardHeader.classList.add('blurimage');
+        hasWon();
+      } else {
+        dropdown.style.visibility = 'hidden';
+        tagmodal.style.visibility = 'hidden';
       }
     });
   });
