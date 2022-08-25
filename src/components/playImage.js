@@ -35,14 +35,13 @@ const playImage = (image) => {
     positions = response;
   });
 
-  // To check if tow numbers are within desired range
+  // To check if tow numbers are within the desired range of 40 pixels
   const isWithinRange = (xclick, xdata, yclick, ydata) => {
     if ((xclick <= xdata + 20)
          && (xclick >= xdata - 20)
          && (yclick <= ydata + 20)
          && (yclick >= ydata - 20)
     ) {
-      console.log(xclick, xdata, yclick, ydata);
       return true;
     }
     return false;
@@ -168,12 +167,6 @@ const playImage = (image) => {
 
   content.appendChild(playcontainer);
 
-  /* The following code was to get the hidden positions when creating position.js:
-  const imagecoord = imageplayed.getBoundingClientRect();
-  const imagecoordleft = imagecoord.left;
-  const imagecoordtop = imagecoord.top;
-  console.log(imagecoordleft, imagecoordtop); */
-
   startmodal.addEventListener('click', () => {
     // Starts the game
     startmodal.style.visibility = 'hidden';
@@ -181,11 +174,15 @@ const playImage = (image) => {
     time.starttimer();
     let xcoord = null;
     let ycoord = null;
+    // Getting the position of the image to play on for further position calculations
+    const imagecoord = imageplayed.getBoundingClientRect();
+    const imagecoordleft = imagecoord.left;
+    const imagecoordtop = imagecoord.top;
 
     imageplayed.addEventListener('click', (e) => {
       // Get the clicks position
-      xcoord = e.clientX + window.scrollX;
-      ycoord = e.clientY + window.scrollY;
+      xcoord = e.clientX + window.scrollX - imagecoordleft;
+      ycoord = e.clientY + window.scrollY - imagecoordtop;
 
       // Removes tagmodal and dropdown when clicking outside them
       if (e.target !== tagmodal && e.target !== dropdown && dropdown.style.visibility === 'visible') {
@@ -193,13 +190,13 @@ const playImage = (image) => {
         tagmodal.style.visibility = 'hidden';
 
       // When the tagmodal and dropdown are not displayed, a click on the image
-      // will make them appear at the clicks location.
+      // will make them appear next to the click location.
       } else {
-        tagmodal.style.left = `${xcoord - 20}px`;
-        tagmodal.style.top = `${ycoord - 20}px`;
+        tagmodal.style.left = `${xcoord + imagecoordleft - 20}px`;
+        tagmodal.style.top = `${ycoord + imagecoordtop - 20}px`;
         tagmodal.style.visibility = 'visible';
-        dropdown.style.left = `${xcoord + 25}px`;
-        dropdown.style.top = `${ycoord - 20}px`;
+        dropdown.style.left = `${xcoord + imagecoordleft + 25}px`;
+        dropdown.style.top = `${ycoord + imagecoordtop - 20}px`;
         dropdown.style.visibility = 'visible';
       }
     });
