@@ -7,6 +7,8 @@ import odlawimage from '../images/odlaw.png';
 import whitebeardimage from '../images/whitebeard.png';
 import timer from './timer';
 import firebasePositions from './firebasePositions';
+import footer from './footer';
+import playHeader from './playHeader';
 
 const playImage = (image) => {
   let positions = null;
@@ -100,6 +102,7 @@ const playImage = (image) => {
         scoreName = e.target.value;
       });
 
+      // Adding score to the Firestore
       addscore.addEventListener('click', async () => {
         const thisImage = getImage(image);
         if (scoreName === '') {
@@ -115,6 +118,13 @@ const playImage = (image) => {
             console.log('Error adding to collection:', e);
           }
         }
+      });
+
+      playagain.addEventListener('click', () => {
+        content.innerHTML = '';
+        playHeader();
+        playImage(image);
+        footer();
       });
     }
   };
