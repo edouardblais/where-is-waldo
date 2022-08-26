@@ -75,9 +75,18 @@ const playImage = (image) => {
       winningmodal.classList.add('winningmodal');
       winningmodal.innerHTML = `You found them all!\nYour time is ${winningTime.minute}:${winningTime.seconds}:${winningTime.centiseconds}`;
 
+      const inputbox = document.createElement('div');
+      inputbox.classList.add('inputbox');
+
       const inputname = document.createElement('input');
       inputname.placeholder = 'Please enter your name!';
       inputname.classList.add('inputname');
+      inputbox.appendChild(inputname);
+
+      const errormessage = document.createElement('p');
+      errormessage.innerText = 'Please enter your name to add your score to the leaderboard';
+      errormessage.classList.add('errormessage');
+      inputbox.appendChild(errormessage);
 
       const addscore = document.createElement('button');
       addscore.classList.add('button');
@@ -85,13 +94,14 @@ const playImage = (image) => {
 
       const leaderboard = document.createElement('button');
       leaderboard.classList.add('button');
+      leaderboard.classList.add('leaderboardbutton');
       leaderboard.innerText = 'See Leaderboard';
 
       const playagain = document.createElement('button');
       playagain.classList.add('button');
       playagain.innerText = 'Play Again';
 
-      winningmodal.appendChild(inputname);
+      winningmodal.appendChild(inputbox);
       winningmodal.appendChild(addscore);
       winningmodal.appendChild(leaderboard);
       winningmodal.appendChild(playagain);
@@ -106,8 +116,9 @@ const playImage = (image) => {
       addscore.addEventListener('click', async () => {
         const thisImage = getImage(image);
         if (scoreName === '') {
-          inputname.placeholder.style.color = 'red';
+          errormessage.style.visibility = 'visible';
         } else {
+          errormessage.style.visibility = 'hidden';
           try {
             await addDoc(collection(db, 'leaderboard'), {
               Image: thisImage,
@@ -120,6 +131,7 @@ const playImage = (image) => {
         }
       });
 
+      // play again logic
       playagain.addEventListener('click', () => {
         content.innerHTML = '';
         playHeader();

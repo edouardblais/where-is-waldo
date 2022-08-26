@@ -33,6 +33,7 @@ const homeContent = () => {
   leaderboard.innerText = 'View Leaderboard';
   leaderboard.id = 'leaderboardbutton';
   leaderboard.classList.add('button');
+  leaderboard.classList.add('leaderboardbutton');
 
   homecontentcontainer.appendChild(imagecontainer);
   homecontentcontainer.appendChild(leaderboard);

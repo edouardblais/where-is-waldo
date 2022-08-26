@@ -151,10 +151,23 @@ body {
     align-items:center;
 }
 
+.inputbox {
+    display: flex;
+    flex-direction: column;
+}
+
 .inputname {
     width: 20vw;
     border-radius: .5em;
     font-size: 16px;
+}
+
+.errormessage {
+    color:#dc2626;
+    font-size: 16px;
+    font-weight: 700;
+    margin:0;
+    visibility: hidden;
 }
 
 .button {
