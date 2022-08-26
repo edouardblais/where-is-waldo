@@ -29,7 +29,7 @@ document.addEventListener('click', (e) => {
     playHeader();
     playImage(Space);
     footer();
-  } else if (target === 'leaderboardbutton') {
+  } else if (e.target.classList.contains('leaderboardbutton')) {
     content.innerHTML = '';
     homeHeader();
     showLeaderboard();

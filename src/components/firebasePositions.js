@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import {
-  getFirestore, addDoc, collection, getDocs,
+  getFirestore, collection, getDocs,
 } from 'firebase/firestore/lite';
 
 const firebasePositions = async () => {

@@ -179,3 +179,17 @@ body {
     border: 2px solid #991b1b;
     border-radius: .5em;
 }
+
+.leaderboardbox {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 20px; 
+}
+
+.imagescorebox {
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+    align-items: center;
+}
