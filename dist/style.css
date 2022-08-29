@@ -1,5 +1,6 @@
 body {
     margin:0;
+    font-family: 'Oswald', sans-serif;
 }
 
 #maincontent {
@@ -9,7 +10,7 @@ body {
     display: flex;
     flex-direction: column;
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     align-items: center;
     justify-content: flex-start;
 }
@@ -40,9 +41,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 5vh;
-    max-height: 7vh;
+    font-size: 5em;
     color: red;
+    font-weight: 700;
 }
 
 .playheadercontainer {
@@ -66,19 +67,26 @@ body {
     max-height: 5vh;
 }
 
+#timer {
+    width:15vw;
+}
+
 .footercontainer {
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 2vh;
-    max-height: 3vh;
+    min-height: 3vh;
     color: blue;
+    width: 97vw;
 }
 
 .playcontainer {
     max-width: 90vw;
     max-height: 90vh;
     padding: 1vw;
+    flex:1;
+    display:flex;
 }
 
 .playimage {
@@ -178,6 +186,10 @@ body {
     text-align: center;
     border: 2px solid #991b1b;
     border-radius: .5em;
+    font-family: 'Oswald', sans-serif;
+    padding: 5px;
+    max-height: 50px;
+
 }
 
 .leaderboardbox {
@@ -198,6 +210,8 @@ body {
 .leaderboardtitle {
     color: #dc2626;
     margin:0;
+    font-weight: 700;
+    font-size: 4em;
 }
 
 .imagescorebox {
