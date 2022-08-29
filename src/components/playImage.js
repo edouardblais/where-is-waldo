@@ -64,6 +64,7 @@ const playImage = (image) => {
 
   // To be called after each good pick to see if game is over and take further appropriate actions
   const hasWon = () => {
+    // when the length of the foundCharacters array is of 3, all characters have been found
     if (foundCharacters.length === 3) {
       time.stoptimer();
       const winningTime = time.getTime();
@@ -80,10 +81,10 @@ const playImage = (image) => {
       inputname.classList.add('inputname');
       inputbox.appendChild(inputname);
 
-      const errormessage = document.createElement('p');
-      errormessage.innerText = 'Please enter your name to add your score to the leaderboard';
-      errormessage.classList.add('errormessage');
-      inputbox.appendChild(errormessage);
+      const message = document.createElement('p');
+      message.innerText = '';
+      message.classList.add('message');
+      inputbox.appendChild(message);
 
       const addscore = document.createElement('button');
       addscore.classList.add('button');
@@ -113,17 +114,21 @@ const playImage = (image) => {
       addscore.addEventListener('click', async () => {
         const thisImage = getImage(image);
         if (scoreName === '') {
-          errormessage.style.visibility = 'visible';
+          message.innerText = 'Please enter your name to add your score to the leaderboard';
+          message.style.visibility = 'visible';
         } else {
-          errormessage.style.visibility = 'hidden';
           try {
             await addDoc(collection(db, 'leaderboard'), {
               Image: thisImage,
               Name: scoreName,
               Time: winningTime,
             });
+            message.innerText = 'Your score has been added to the leaderboard!';
+            message.style.visibility = 'visible';
           } catch (e) {
             console.log('Error adding to collection:', e);
+            message.innerText = 'Ho ho! An error has occured while adding the score to the leaderboard';
+            message.style.visibility = 'visible';
           }
         }
       });
