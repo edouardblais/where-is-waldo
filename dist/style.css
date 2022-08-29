@@ -188,6 +188,18 @@ body {
     flex:1;
 }
 
+.leaderboardheadercontainer {
+    display: flex;
+    justify-content: space-between;
+    padding: 2vw;
+    width: 93vw;
+}
+
+.leaderboardtitle {
+    color: #dc2626;
+    margin:0;
+}
+
 .imagescorebox {
     display: flex;
     flex-direction: column;

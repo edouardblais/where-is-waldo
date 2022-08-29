@@ -11,9 +11,6 @@ const showLeaderboard = () => {
   const leaderboardBox = document.createElement('div');
   leaderboardBox.classList.add('leaderboardbox');
 
-  const leaderboardtitle = document.createElement('h1');
-  leaderboardtitle.innerText = 'Leaderboard';
-
   const beachBox = document.createElement('div');
   beachBox.classList.add('imagescorebox');
   const beachimage = document.createElement('img');
@@ -100,7 +97,6 @@ const showLeaderboard = () => {
   leaderboardBox.appendChild(snowBox);
   leaderboardBox.appendChild(spaceBox);
 
-  content.appendChild(leaderboardtitle);
   content.appendChild(leaderboardBox);
 };
 

@@ -1,5 +1,5 @@
 import homePage from './components/homePage';
-import homeHeader from './components/homeHeader';
+import leaderboardHeader from './components/leaderboardHeader';
 import footer from './components/footer';
 import playHeader from './components/playHeader';
 import playImage from './components/playImage';
@@ -31,7 +31,7 @@ document.addEventListener('click', (e) => {
     footer();
   } else if (e.target.classList.contains('leaderboardbutton')) {
     content.innerHTML = '';
-    homeHeader();
+    leaderboardHeader();
     showLeaderboard();
     footer();
   } else if (target === 'backtohomebutton') {
