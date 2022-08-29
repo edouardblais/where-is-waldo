@@ -67,9 +67,6 @@ const playImage = (image) => {
     if (foundCharacters.length === 3) {
       time.stoptimer();
       const winningTime = time.getTime();
-      const timeSent = (winningTime.minute * 60 * 100)
-      + (winningTime.seconds * 100)
-      + (winningTime.centiseconds);
 
       const winningmodal = document.createElement('div');
       winningmodal.classList.add('winningmodal');
@@ -123,7 +120,7 @@ const playImage = (image) => {
             await addDoc(collection(db, 'leaderboard'), {
               Image: thisImage,
               Name: scoreName,
-              Time: timeSent,
+              Time: winningTime,
             });
           } catch (e) {
             console.log('Error adding to collection:', e);

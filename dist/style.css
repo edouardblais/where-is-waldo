@@ -185,11 +185,22 @@ body {
     grid-template-rows: 1fr;
     grid-template-columns: 1fr 1fr 1fr;
     column-gap: 20px; 
+    flex:1;
 }
 
 .imagescorebox {
     display: flex;
     flex-direction: column;
     gap:20px;
-    align-items: center;
+}
+
+.score {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.score > p {
+    margin:0;
+    font-size: 1.5em;
 }
