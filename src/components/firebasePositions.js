@@ -1,7 +1,8 @@
 import { initializeApp } from 'firebase/app';
 import {
-  getFirestore, collection, getDocs,
+  getFirestore, collection, getDocs, addDoc,
 } from 'firebase/firestore/lite';
+import Position from './position';
 
 const firebasePositions = async () => {
   const firebaseConfig = {
@@ -22,14 +23,14 @@ const firebasePositions = async () => {
         as seen in Position.js, to the Firestore.
         The code was then commented as to not add a new collection every time it is run.
 
-        try {
-          const docRef = await addDoc(collection(db, 'positions'), {
-            Position,
-          });
-          console.log(docRef.id);
-        } catch (e) {
-          console.log('Error adding to collection:', e);
-        } */
+  try {
+    const docRef = await addDoc(collection(db, 'positions'), {
+      Position,
+    });
+    console.log(docRef.id);
+  } catch (e) {
+    console.log('Error adding to collection:', e);
+  } */
 
   const getPositions = await getDocs(collection(db, 'positions'));
   const hiddenPositions = getPositions.docs.map((doc) => doc.data());

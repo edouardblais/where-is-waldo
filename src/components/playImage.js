@@ -202,6 +202,8 @@ const playImage = (image) => {
     const imagecoord = imageplayed.getBoundingClientRect();
     const imagecoordleft = imagecoord.left;
     const imagecoordtop = imagecoord.top;
+    const imagewidth = imagecoord.right - imagecoord.left;
+    const imageheight = imagecoord.bottom - imagecoord.top;
 
     imageplayed.addEventListener('click', (e) => {
       // Get the clicks position
@@ -226,27 +228,28 @@ const playImage = (image) => {
     });
 
     dropdown.addEventListener('click', (e) => {
-      // Giving variables to the positions to facilitate further checking for spotted character
-      const beachWaldoLeft = positions[0].Position.Beach.Waldo.left;
-      const beachWaldoTop = positions[0].Position.Beach.Waldo.top;
-      const beachOdlawLeft = positions[0].Position.Beach.Odlaw.left;
-      const beachOdlawTop = positions[0].Position.Beach.Odlaw.top;
-      const beachWhitebeardLeft = positions[0].Position.Beach.Whitebeard.left;
-      const beachWhitebeardTop = positions[0].Position.Beach.Whitebeard.top;
+      // Getting the positions (as ratios) and multiplying by the actual image size
+      // to get the proper location of the characters.
+      const beachWaldoLeft = positions[0].Position.Beach.Waldo.left * imagewidth;
+      const beachWaldoTop = positions[0].Position.Beach.Waldo.top * imageheight;
+      const beachOdlawLeft = positions[0].Position.Beach.Odlaw.left * imagewidth;
+      const beachOdlawTop = positions[0].Position.Beach.Odlaw.top * imageheight;
+      const beachWhitebeardLeft = positions[0].Position.Beach.Whitebeard.left * imagewidth;
+      const beachWhitebeardTop = positions[0].Position.Beach.Whitebeard.top * imageheight;
 
-      const snowWaldoLeft = positions[0].Position.Snow.Waldo.left;
-      const snowWaldoTop = positions[0].Position.Snow.Waldo.top;
-      const snowOdlawLeft = positions[0].Position.Snow.Odlaw.left;
-      const snowOdlawTop = positions[0].Position.Snow.Odlaw.top;
-      const snowWhitebeardLeft = positions[0].Position.Snow.Whitebeard.left;
-      const snowWhitebeardTop = positions[0].Position.Snow.Whitebeard.top;
+      const snowWaldoLeft = positions[0].Position.Snow.Waldo.left * imagewidth;
+      const snowWaldoTop = positions[0].Position.Snow.Waldo.top * imageheight;
+      const snowOdlawLeft = positions[0].Position.Snow.Odlaw.left * imagewidth;
+      const snowOdlawTop = positions[0].Position.Snow.Odlaw.top * imageheight;
+      const snowWhitebeardLeft = positions[0].Position.Snow.Whitebeard.left * imagewidth;
+      const snowWhitebeardTop = positions[0].Position.Snow.Whitebeard.top * imageheight;
 
-      const spaceWaldoLeft = positions[0].Position.Space.Waldo.left;
-      const spaceWaldoTop = positions[0].Position.Space.Waldo.top;
-      const spaceOdlawLeft = positions[0].Position.Space.Odlaw.left;
-      const spaceOdlawTop = positions[0].Position.Space.Odlaw.top;
-      const spaceWhitebeardLeft = positions[0].Position.Space.Whitebeard.left;
-      const spaceWhitebeardTop = positions[0].Position.Space.Whitebeard.top;
+      const spaceWaldoLeft = positions[0].Position.Space.Waldo.left * imagewidth;
+      const spaceWaldoTop = positions[0].Position.Space.Waldo.top * imageheight;
+      const spaceOdlawLeft = positions[0].Position.Space.Odlaw.left * imagewidth;
+      const spaceOdlawTop = positions[0].Position.Space.Odlaw.top * imageheight;
+      const spaceWhitebeardLeft = positions[0].Position.Space.Whitebeard.left * imagewidth;
+      const spaceWhitebeardTop = positions[0].Position.Space.Whitebeard.top * imageheight;
 
       // Getting the header images to blur spotted character in further logic
       const waldoHeader = document.getElementById('waldoheader');

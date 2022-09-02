@@ -1,44 +1,44 @@
 const Position = {
   Beach: {
     Waldo: {
-      left: 741,
-      top: 311,
+      left: 0.62,
+      top: 0.40,
     },
     Odlaw: {
-      left: 128,
-      top: 290,
+      left: 0.105,
+      top: 0.375,
     },
     Whitebeard: {
-      left: 323,
-      top: 287,
+      left: 0.27,
+      top: 0.371,
     },
   },
   Snow: {
     Waldo: {
-      left: 1022,
-      top: 587,
+      left: 0.852,
+      top: 0.758,
     },
     Odlaw: {
-      left: 380,
-      top: 506,
+      left: 0.317,
+      top: 0.654,
     },
     Whitebeard: {
-      left: 80,
-      top: 599,
+      left: 0.067,
+      top: 0.774,
     },
   },
   Space: {
     Waldo: {
-      left: 487,
-      top: 491,
+      left: 0.406,
+      top: 0.634,
     },
     Odlaw: {
-      left: 88,
-      top: 545,
+      left: 0.073,
+      top: 0.704,
     },
     Whitebeard: {
-      left: 937,
-      top: 452,
+      left: 0.781,
+      top: 0.584,
     },
   },
 };
