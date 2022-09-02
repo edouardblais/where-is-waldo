@@ -58,13 +58,17 @@ body {
     padding: 1vh;
 }
 
-.headerimages {
+.headerimagescontainer {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
     gap:1vw;
     max-height: 5vh;
+}
+
+.headerimages {
+    height: 4.5vh;
 }
 
 #timer {

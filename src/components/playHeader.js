@@ -9,21 +9,24 @@ const homeHeader = () => {
   headercontainer.classList.add('playheadercontainer');
 
   const imagescontainer = document.createElement('div');
-  imagescontainer.classList.add('headerimages');
+  imagescontainer.classList.add('headerimagescontainer');
 
   const waldo = document.createElement('img');
   waldo.id = 'waldoheader';
   waldo.src = waldoimage;
+  waldo.classList.add('headerimages');
   imagescontainer.appendChild(waldo);
 
   const odlaw = document.createElement('img');
   odlaw.id = 'odlawheader';
   odlaw.src = odlawimage;
+  odlaw.classList.add('headerimages');
   imagescontainer.appendChild(odlaw);
 
   const whitebeard = document.createElement('img');
   whitebeard.id = 'whitebeardheader';
   whitebeard.src = whitebeardimage;
+  whitebeard.classList.add('headerimages');
   imagescontainer.appendChild(whitebeard);
 
   const timercontainer = document.createElement('div');
